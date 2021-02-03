@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Footer from "./Footer";
-
+import Header from "./Header";
 
 class Index extends Component {
     render() {
@@ -23,7 +23,7 @@ class Index extends Component {
                         </div>
                     </div>
                 </div>
-                
+                <Footer></Footer>
             </div>
         );
     }
