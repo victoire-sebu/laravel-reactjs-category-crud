@@ -10,3 +10,4 @@
         a. npm install
         b. npm install resolve-url-loader@^3.1.2 --save-dev --legacy-peer-deps
         c. npm run dev
+5. npm install react-router-dom --save
