@@ -9,7 +9,7 @@ class Header extends Component {
         return (
             <Router>
                 <div>
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                         <Link className="navbar-brand" to="/">
                             Navbar
                         </Link>
@@ -24,7 +24,6 @@ class Header extends Component {
                         >
                             <span className="navbar-toggler-icon"></span>
                         </button>
-
                         <div
                             className="collapse navbar-collapse"
                             id="navbarSupportedContent"

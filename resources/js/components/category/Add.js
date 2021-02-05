@@ -4,15 +4,22 @@ class Add extends Component {
     render() {
         return (
             <div className="container">
-                <div className="row justify-content-center">
-                    <div className="col-md-8">
-                        <div className="card">
-                            <div className="card-body">
-                                This is the add page
-                            </div>
-                        </div>
+                <form>
+                    <div class="form-group">
+                        <label for="category_name">Category name</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="category_name"
+                            aria-describedby="emailHelp"
+                            placeholder="Category name"
+                        />
                     </div>
-                </div>
+
+                    <button type="submit" className="btn btn-primary">
+                        Submit
+                    </button>
+                </form>
             </div>
         );
     }

@@ -8,9 +8,20 @@ class Index extends Component {
         return (
             <div>
                 <Router>
-                    <div>
-                        <Link to="/category">Listing</Link>
-                        <Link to="/category/add">Add</Link>
+                    <div className="container">
+                        <div className="row justify-content-center">
+                            <Link to="/category" className="btn btn-primary">
+                                Listing
+                            </Link>{" "}
+                            &nbsp;
+                            <Link
+                                to="/category/add"
+                                className="btn btn-secondary"
+                            >
+                                Add
+                            </Link>
+                        </div>
+
                         <Route exact path="/category" component={Listing} />
                         <Route exact path="/category/add" component={Add} />
                     </div>
