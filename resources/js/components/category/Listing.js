@@ -1,6 +1,20 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 class Listing extends Component {
+    constructor() {
+        super();
+        this.state = {
+            categories: [],
+        };
+    }
+
+    componentDidMount() {
+        axios.get("http://127.0.0.1:8000/category").then((response) => {
+            this.setState({ categories: response.data });
+        });
+    }
+
     render() {
         return (
             <div className="container">
@@ -15,12 +29,17 @@ class Listing extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>mdo</td>
-                        </tr>
+                        {this.state.categories.map((category) => {
+                            return (
+                                <tr>
+                                    <th scope="row">{category.id}</th>
+                                    <td>{category.name}</td>
+                                    <td>{category.active}</td>
+                                    <td>{category.created_at}</td>
+                                    <td>{category.updated_at}</td>
+                                </tr>
+                            );
+                        })}
                     </tbody>
                 </table>
             </div>
