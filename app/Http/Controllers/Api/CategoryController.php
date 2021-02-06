@@ -38,8 +38,8 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $category = new Category();
-        
-        $category->name=$request->category_name;
+
+        $category->name = $request->category_name;
         $category->save();
     }
 
@@ -85,6 +85,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        $category->delete();
     }
 }

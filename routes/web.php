@@ -20,3 +20,4 @@ Route::get('/', function () {
 });
 Route::get('category', [CategoryController::class, 'index']);
 Route::post('category/store', [CategoryController::class, 'store']);
+Route::delete('category/delete/{id}', [CategoryController::class, 'destroy']);
