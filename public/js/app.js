@@ -2721,8 +2721,29 @@ var Listing = /*#__PURE__*/function (_Component) {
       });
     }
   }, {
+    key: "onDelete",
+    value: function onDelete(category_id) {
+      var _this3 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_2___default().delete("http://127.0.0.1:8000/category/delete/" + category_id).then(function (response) {
+        var categories = _this3.state.categories;
+
+        for (var i = 0; i < categories.length; i++) {
+          if (categories[i].id == category_id) {
+            categories.splice(i, 1);
+
+            _this3.setState({
+              categories: categories
+            });
+          }
+        }
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this4 = this;
+
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
         className: "container",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("table", {
@@ -2744,6 +2765,9 @@ var Listing = /*#__PURE__*/function (_Component) {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("th", {
                 scope: "col",
                 children: "Update At"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("th", {
+                scope: "col",
+                children: "Action"
               })]
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("tbody", {
@@ -2760,6 +2784,12 @@ var Listing = /*#__PURE__*/function (_Component) {
                   children: category.created_at
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("td", {
                   children: category.updated_at
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("td", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+                    href: "#",
+                    onClick: _this4.onDelete.bind(_this4, category.id),
+                    children: "Delete"
+                  })
                 })]
               });
             })
