@@ -12,3 +12,4 @@
         c. npm run dev
 5. npm install react-router-dom --save
 6. npm install axios 
+7. npm install react-js-pagination
