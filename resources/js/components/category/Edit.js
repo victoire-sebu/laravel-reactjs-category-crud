@@ -14,10 +14,14 @@ class Edit extends Component {
     }
 
     componentDidMount() {
-        axios.get("http://127.0.0.1:8000/category/edit/"+this.props.match.params.id)
+        axios
+            .get(
+                "http://127.0.0.1:8000/category/edit/" +
+                    this.props.match.params.id
+            )
             .then((response) => {
-            this.setState({ category_name: response.data.name });
-        });
+                this.setState({ category_name: response.data.name });
+            });
     }
 
     onChangeCategoryName(e) {

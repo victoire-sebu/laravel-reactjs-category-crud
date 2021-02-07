@@ -1,19 +1,44 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Pagination from "react-js-pagination";
 
 class Listing extends Component {
     constructor() {
         super();
         this.state = {
             categories: [],
+            activePage: 1,
+            itemsCountPerPage: 1,
+            totalItemsCount: 1,
+            pageRangeDisplayed: 3,
         };
     }
 
     componentDidMount() {
         axios.get("http://127.0.0.1:8000/category").then((response) => {
-            this.setState({ categories: response.data });
+            this.setState({
+                categories: response.data.data,
+                activePage: response.data.current_page,
+                itemsCountPerPage: response.data.per_page,
+                totalItemsCount: response.data.total,
+            });
         });
+    }
+
+    handlePageChange(pageNumber) {
+        console.log(`active page is ${pageNumber}`);
+        this.setState({ activePage: pageNumber });
+        axios
+            .get("http://127.0.0.1:8000/category?page=" + pageNumber)
+            .then((response) => {
+                this.setState({
+                    categories: response.data.data,
+                    activePage: response.data.current_page,
+                    itemsCountPerPage: response.data.per_page,
+                    totalItemsCount: response.data.total,
+                });
+            });
     }
 
     onDelete(category_id) {
@@ -79,6 +104,17 @@ class Listing extends Component {
                         })}
                     </tbody>
                 </table>
+                <div className="d-flex justify-content-center">
+                    <Pagination
+                        activePage={this.state.activePage}
+                        itemsCountPerPage={this.state.itemsCountPerPage}
+                        totalItemsCount={this.state.totalItemsCount}
+                        pageRangeDisplayed={this.state.pageRangeDisplayed}
+                        onChange={this.handlePageChange.bind(this)}
+                        itemClass="page-item"
+                        linkClass="page-link"
+                    />
+                </div>
             </div>
         );
     }
