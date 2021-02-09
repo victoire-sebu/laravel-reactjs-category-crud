@@ -3,6 +3,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Pagination from "react-js-pagination";
 import { API_BASE_URL } from "../config";
+import SuccessAlert from "../SuccessAlert";
+import ErrorAlart from "../ErrorAlert";
 
 class Listing extends Component {
     constructor() {
@@ -13,6 +15,7 @@ class Listing extends Component {
             itemsCountPerPage: 1,
             totalItemsCount: 1,
             pageRangeDisplayed: 3,
+            alert_message:'',
         };
     }
 
@@ -53,15 +56,24 @@ class Listing extends Component {
                         this.setState({ categories: categories });
                     }
                 }
+                    this.setState({ alert_message: "success" });
+            })
+            .catch((error) => {
+                this.setState({ alert_message: "error" });
             });
     }
 
     render() {
         return (
             <div className="container">
+                <hr />
+                {this.state.alert_message == "success" ? (
+                    <SuccessAlert />
+                ) : null}
+                {this.state.alert_message == "error" ? <ErrorAlart /> : null}
                 <table className="table">
                     <thead>
-                        <tr>
+                        <tr >
                             <th scope="col">#</th>
                             <th scope="col">Category name</th>
                             <th scope="col">Status</th>
@@ -73,7 +85,7 @@ class Listing extends Component {
                     <tbody>
                         {this.state.categories.map((category) => {
                             return (
-                                <tr>
+                                <tr key={category.id}>
                                     <th scope="row">{category.id}</th>
                                     <td>{category.name}</td>
                                     <td>

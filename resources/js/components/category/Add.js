@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { API_BASE_URL } from "../config";
+import SuccessAlert from "../SuccessAlert";
+import ErrorAlart from "../ErrorAlert";
 
 class Add extends Component {
     constructor() {
@@ -11,6 +13,7 @@ class Add extends Component {
 
         this.state = {
             category_name: "",
+            alert_message: "",
         };
     }
 
@@ -28,12 +31,22 @@ class Add extends Component {
 
         axios
             .post(API_BASE_URL + "/category/store", category)
-            .then((res) => console.log(res.data));
+            .then((res) => {
+                this.setState({ alert_message: "success" });
+            })
+            .catch((error) => {
+                this.setState({ alert_message: "error" });
+            });
     }
 
     render() {
         return (
             <div className="container">
+                <hr />
+                {this.state.alert_message == "success" ? (
+                    <SuccessAlert />
+                ) : null}
+                {this.state.alert_message == "error" ? <ErrorAlart /> : null}
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label htmlFor="category_name">Category name</label>
