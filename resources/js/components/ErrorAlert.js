@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 
 class ErrorAlart extends Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
         return (
             <div class="alert alert-danger" role="alert">
-                Error occured.
+                {this.props.message}
             </div>
         );
     }

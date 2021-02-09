@@ -13,7 +13,7 @@ class Edit extends Component {
 
         this.state = {
             category_name: "",
-            alert_message:"",
+            alert_message: "",
         };
     }
 
@@ -43,10 +43,10 @@ class Edit extends Component {
                 category
             )
             .then((res) => {
-                this.setState({alert_message:"success"})
+                this.setState({ alert_message: "success" });
             })
             .catch((error) => {
-                this.setState({alert_message:"error"})
+                this.setState({ alert_message: "error" });
             });
     }
 
@@ -54,8 +54,14 @@ class Edit extends Component {
         return (
             <div className="container">
                 <hr />
-                {this.state.alert_message == "success" ? <SuccessAlert /> : null }
-                {this.state.alert_message=="error"?<ErrorAlart/>:null}
+                {this.state.alert_message == "success" ? (
+                    <SuccessAlert message={"Update category succesfull !"} />
+                ) : null}
+                {this.state.alert_message == "error" ? (
+                    <ErrorAlart
+                        message={"Error occured when updating category"}
+                    />
+                ) : null}
                 <form onSubmit={this.onSubmit}>
                     <div class="form-group">
                         <label for="category_name">Category name</label>

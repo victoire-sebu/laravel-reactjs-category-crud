@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 
 class SuccessAlert extends Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
         return (
             <div class="alert alert-success" role="alert">
-                Record create/update/delete successful!
+                {this.props.message}
             </div>
         );
     }

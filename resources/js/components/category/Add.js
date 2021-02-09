@@ -44,9 +44,13 @@ class Add extends Component {
             <div className="container">
                 <hr />
                 {this.state.alert_message == "success" ? (
-                    <SuccessAlert />
+                    <SuccessAlert message={"Add category succesfull !"} />
                 ) : null}
-                {this.state.alert_message == "error" ? <ErrorAlart /> : null}
+                {this.state.alert_message == "error" ? (
+                    <ErrorAlart
+                        message={"Error occured when adding category"}
+                    />
+                ) : null}
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label htmlFor="category_name">Category name</label>

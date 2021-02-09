@@ -15,7 +15,7 @@ class Listing extends Component {
             itemsCountPerPage: 1,
             totalItemsCount: 1,
             pageRangeDisplayed: 3,
-            alert_message:'',
+            alert_message: "",
         };
     }
 
@@ -56,7 +56,7 @@ class Listing extends Component {
                         this.setState({ categories: categories });
                     }
                 }
-                    this.setState({ alert_message: "success" });
+                this.setState({ alert_message: "success" });
             })
             .catch((error) => {
                 this.setState({ alert_message: "error" });
@@ -68,12 +68,16 @@ class Listing extends Component {
             <div className="container">
                 <hr />
                 {this.state.alert_message == "success" ? (
-                    <SuccessAlert />
+                    <SuccessAlert message={"Delete category succesfull !"} />
                 ) : null}
-                {this.state.alert_message == "error" ? <ErrorAlart /> : null}
+                {this.state.alert_message == "error" ? (
+                    <ErrorAlart
+                        message={"Error occured when deleting category"}
+                    />
+                ) : null}
                 <table className="table">
                     <thead>
-                        <tr >
+                        <tr>
                             <th scope="col">#</th>
                             <th scope="col">Category name</th>
                             <th scope="col">Status</th>

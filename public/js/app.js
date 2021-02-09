@@ -2102,10 +2102,10 @@ var ErrorAlart = /*#__PURE__*/function (_Component) {
 
   var _super = _createSuper(ErrorAlart);
 
-  function ErrorAlart() {
+  function ErrorAlart(props) {
     _classCallCheck(this, ErrorAlart);
 
-    return _super.apply(this, arguments);
+    return _super.call(this, props);
   }
 
   _createClass(ErrorAlart, [{
@@ -2114,7 +2114,7 @@ var ErrorAlart = /*#__PURE__*/function (_Component) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
         "class": "alert alert-danger",
         role: "alert",
-        children: "Error occured."
+        children: this.props.message
       });
     }
   }]);
@@ -2555,10 +2555,10 @@ var SuccessAlert = /*#__PURE__*/function (_Component) {
 
   var _super = _createSuper(SuccessAlert);
 
-  function SuccessAlert() {
+  function SuccessAlert(props) {
     _classCallCheck(this, SuccessAlert);
 
-    return _super.apply(this, arguments);
+    return _super.call(this, props);
   }
 
   _createClass(SuccessAlert, [{
@@ -2567,7 +2567,7 @@ var SuccessAlert = /*#__PURE__*/function (_Component) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
         "class": "alert alert-success",
         role: "alert",
-        children: "Record create/update/delete successful!"
+        children: this.props.message
       });
     }
   }]);
@@ -2679,7 +2679,11 @@ var Add = /*#__PURE__*/function (_Component) {
     value: function render() {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
         className: "container",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {}), this.state.alert_message == "success" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_SuccessAlert__WEBPACK_IMPORTED_MODULE_4__.default, {}) : null, this.state.alert_message == "error" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ErrorAlert__WEBPACK_IMPORTED_MODULE_5__.default, {}) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {}), this.state.alert_message == "success" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_SuccessAlert__WEBPACK_IMPORTED_MODULE_4__.default, {
+          message: "Add category succesfull !"
+        }) : null, this.state.alert_message == "error" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ErrorAlert__WEBPACK_IMPORTED_MODULE_5__.default, {
+          message: "Error occured when adding category"
+        }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", {
           onSubmit: this.onSubmit,
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
             className: "form-group",
@@ -2823,7 +2827,11 @@ var Edit = /*#__PURE__*/function (_Component) {
     value: function render() {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
         className: "container",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {}), this.state.alert_message == "success" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_SuccessAlert__WEBPACK_IMPORTED_MODULE_4__.default, {}) : null, this.state.alert_message == "error" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ErrorAlert__WEBPACK_IMPORTED_MODULE_5__.default, {}) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {}), this.state.alert_message == "success" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_SuccessAlert__WEBPACK_IMPORTED_MODULE_4__.default, {
+          message: "Update category succesfull !"
+        }) : null, this.state.alert_message == "error" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ErrorAlert__WEBPACK_IMPORTED_MODULE_5__.default, {
+          message: "Error occured when updating category"
+        }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", {
           onSubmit: this.onSubmit,
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
             "class": "form-group",
@@ -3028,7 +3036,7 @@ var Listing = /*#__PURE__*/function (_Component) {
       itemsCountPerPage: 1,
       totalItemsCount: 1,
       pageRangeDisplayed: 3,
-      alert_message: ''
+      alert_message: ""
     };
     return _this;
   }
@@ -3099,7 +3107,11 @@ var Listing = /*#__PURE__*/function (_Component) {
 
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
         className: "container",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {}), this.state.alert_message == "success" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_SuccessAlert__WEBPACK_IMPORTED_MODULE_5__.default, {}) : null, this.state.alert_message == "error" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ErrorAlert__WEBPACK_IMPORTED_MODULE_6__.default, {}) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("table", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {}), this.state.alert_message == "success" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_SuccessAlert__WEBPACK_IMPORTED_MODULE_5__.default, {
+          message: "Delete category succesfull !"
+        }) : null, this.state.alert_message == "error" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ErrorAlert__WEBPACK_IMPORTED_MODULE_6__.default, {
+          message: "Error occured when deleting category"
+        }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("table", {
           className: "table",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("thead", {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("tr", {
