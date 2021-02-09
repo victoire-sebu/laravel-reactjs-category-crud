@@ -13,3 +13,4 @@
 5. npm install react-router-dom --save
 6. npm install axios 
 7. npm install react-js-pagination
+8. composer require barryvdh/laravel-cors //no important for the moment//
