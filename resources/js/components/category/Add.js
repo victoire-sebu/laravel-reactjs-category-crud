@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 
 class Add extends Component {
     constructor() {
@@ -26,7 +27,7 @@ class Add extends Component {
         };
 
         axios
-            .post("http://127.0.0.1:8000/category/store", category)
+            .post(API_BASE_URL + "/category/store", category)
             .then((res) => console.log(res.data));
     }
 
@@ -34,8 +35,8 @@ class Add extends Component {
         return (
             <div className="container">
                 <form onSubmit={this.onSubmit}>
-                    <div class="form-group">
-                        <label for="category_name">Category name</label>
+                    <div className="form-group">
+                        <label htmlFor="category_name">Category name</label>
                         <input
                             type="text"
                             className="form-control"

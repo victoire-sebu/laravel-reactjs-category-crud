@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 
 class Edit extends Component {
     constructor(props) {
@@ -15,10 +16,7 @@ class Edit extends Component {
 
     componentDidMount() {
         axios
-            .get(
-                "http://127.0.0.1:8000/category/edit/" +
-                    this.props.match.params.id
-            )
+            .get(API_BASE_URL + "/category/edit/" + this.props.match.params.id)
             .then((response) => {
                 this.setState({ category_name: response.data.name });
             });
@@ -38,8 +36,7 @@ class Edit extends Component {
 
         axios
             .put(
-                "http://127.0.0.1:8000/category/update/" +
-                    this.props.match.params.id,
+                API_BASE_URL + "/category/update/" + this.props.match.params.id,
                 category
             )
             .then((res) => console.log(res.data));

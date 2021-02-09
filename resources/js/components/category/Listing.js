@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Pagination from "react-js-pagination";
+import { API_BASE_URL } from "../config";
 
 class Listing extends Component {
     constructor() {
@@ -16,7 +17,7 @@ class Listing extends Component {
     }
 
     componentDidMount() {
-        axios.get("http://127.0.0.1:8000/category").then((response) => {
+        axios.get(API_BASE_URL + "/category").then((response) => {
             this.setState({
                 categories: response.data.data,
                 activePage: response.data.current_page,
@@ -30,7 +31,7 @@ class Listing extends Component {
         console.log(`active page is ${pageNumber}`);
         this.setState({ activePage: pageNumber });
         axios
-            .get("http://127.0.0.1:8000/category?page=" + pageNumber)
+            .get(API_BASE_URL + "/category?page=" + pageNumber)
             .then((response) => {
                 this.setState({
                     categories: response.data.data,
@@ -43,7 +44,7 @@ class Listing extends Component {
 
     onDelete(category_id) {
         axios
-            .delete("http://127.0.0.1:8000/category/delete/" + category_id)
+            .delete(API_BASE_URL + "/category/delete/" + category_id)
             .then((response) => {
                 var categories = this.state.categories;
                 for (var i = 0; i < categories.length; i++) {
