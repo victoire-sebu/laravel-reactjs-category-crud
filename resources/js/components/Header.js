@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Link, Route } from "react-router-dom";
+import { Link, Route, Switch } from "react-router-dom";
 import Home from "./Home";
 import About from "./About";
 import Category from "./category/Index";
+import Error404 from "./Error404";
 
 class Header extends Component {
     render() {
@@ -61,12 +62,18 @@ class Header extends Component {
                         </form>
                     </div>
                 </nav>
-
-                <Route exact path="/" component={Home} />
-                <Route exact path="/about" component={About} />
-                <Route exact path="/category" component={Category} />
-                <Route exact path="/category/add" component={Category} />
-                <Route exact path="/category/edit/:id" component={Category} />
+                <Switch>
+                    <Route exact path="/" component={Home} />
+                    <Route exact path="/about" component={About} />
+                    <Route exact path="/category" component={Category} />
+                    <Route exact path="/category/add" component={Category} />
+                    <Route
+                        exact
+                        path="/category/edit/:id"
+                        component={Category}
+                    />
+                    <Route exact path="/*" component={Error404} />
+                </Switch>
             </div>
         );
     }
